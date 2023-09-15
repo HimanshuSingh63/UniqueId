@@ -1,0 +1,9 @@
+**
+* BS create this trigger execute on insert and update of opportunity to fill Unique Id
+*/
+trigger Opportunity_Insert_UniqueId on Opportunity (before insert,before update) {
+    // System.Label
+    if (System.Label.BSOppUniqueIdSwitch == 'ON') {
+    Opportunity_Insert_UniqueId_Handler.insertUniqueIdMethod(Trigger.new, Trigger.oldMap, Trigger.isUpdate);
+    }
+}
